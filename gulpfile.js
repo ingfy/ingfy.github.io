@@ -3,11 +3,15 @@ var gulp = require('gulp'),
     mainBowerFiles = require('main-bower-files'),
     inject = require('gulp-inject');
 
-gulp.task('index', function () {
+gulp.task('js', function () {
+    return gulp.src(mainBowerFiles()).pipe(gulp.dest('./dist'));
+});
+
+gulp.task('index', ['js'], function () {
     return gulp.src('src/app.html')
         .pipe(rename('index.html'))
-        .pipe(inject(gulp.src(mainBowerFiles(), {read: false})))
-        .pipe(gulp.dest('./'));
+        .pipe(inject(gulp.src(['./dist/**.js', './dist/**.css']), {ignorePath: '/dist'}))
+        .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('watch-index', function () {

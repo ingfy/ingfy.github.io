@@ -1,8 +1,9 @@
 var gulp = require('gulp'),
     rename = require('gulp-rename'),
     mainBowerFiles = require('main-bower-files'),
-    inject = require('gulp-inject');
-var ghPages = require('gh-pages');
+    inject = require('gulp-inject'),
+    ghPages = require('gh-pages'),
+    path = require('path');
 
 gulp.task('js', function () {
     return gulp.src(mainBowerFiles()).pipe(gulp.dest('./dist'));
@@ -19,6 +20,11 @@ gulp.task('watch-index', function () {
     gulp.watch('src/app.html', ['index']);
 });
 
-gulp.task('deploy', ['js', 'index'], function () {
-    return gulp.src('./dist/**/*').pipe(deploy({branch: 'master'}));
+gulp.task('build', ['js', 'index']);
+gulp.task('default', ['build']);
+
+gulp.task('deploy', ['build'], function (cb) {
+    ghPages.publish(path.join(process.cwd(), 'dist'), {
+        branch: 'master'
+    }, cb);
 });

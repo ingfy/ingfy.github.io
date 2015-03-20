@@ -2,8 +2,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     mainBowerFiles = require('main-bower-files'),
     inject = require('gulp-inject');
-
-var deploy      = require('gulp-gh-pages');
+var ghPages = require('gh-pages');
 
 gulp.task('js', function () {
     return gulp.src(mainBowerFiles()).pipe(gulp.dest('./dist'));

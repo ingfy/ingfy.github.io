@@ -20,6 +20,6 @@ gulp.task('watch-index', function () {
     gulp.watch('src/app.html', ['index']);
 });
 
-gulp.task('deploy', function () {
-    return gulp.src("./dist/**/*").pipe(deploy());
+gulp.task('deploy', ['js', 'index'], function () {
+    return gulp.src('./dist/**/*').pipe(deploy({branch: 'master'}));
 });

@@ -112,7 +112,7 @@
     };
 
     Node.prototype.toJSON = function toJSON() {
-        return JSON.stringify(toPlainObject(this));
+        return JSON.stringify(toPlainObject(this), null, 2);
     };
 
     Node.fromJSON = function fromJSON(json) {

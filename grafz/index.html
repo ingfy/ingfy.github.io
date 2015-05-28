@@ -10,57 +10,55 @@
         </style>
     </head>
     <body>
-        <canvas id="canvas" height="500px"></canvas>
+        <canvas id="canvas"></canvas>
 
         <form id="settings">
-            <p><label for="treeJSON">Tree as JSON</label></p>
-            <p>
+            <div>
+                <label>Canvas size</label>
+                <input type="number" name="width" value="500" />
+                <input type="number" name="height" value="500" />
+            </div>
+            <div>
+                <label for="treeJSON">Tree as JSON</label>
+                <br/>
 <textarea name="treeJSON" cols="40" rows="20">
 {
-   "distance": 10,
-   "children": [
-      {
-         "distance": 1,
-         "children": [
+  "distance": 12,
+  "children": [
+    {
+      "distance": 1,
+      "children": [
+        {
+          "distance": 3
+        },
+        {
+          "distance": 1.5
+        }
+      ]
+    },
+    {
+      "distance": 5,
+      "children": [
+        {
+          "distance": 2
+        },
+        {
+          "distance": 2,
+          "children": [
             {
-               "distance":3
+              "distance": 1
             },
             {
-               "distance":1.5
+              "distance": 6
             }
-         ]
-      },
-      {
-         "distance": 5,
-         "children": [
-            {
-               "distance": 2,
-               "children": [
-                  {
-                     "distance":3
-                  },
-                  {
-                     "distance":4
-                  }
-               ]
-            },
-            {
-               "distance": 2,
-               "children": [
-                  {
-                     "distance":1
-                  },
-                  {
-                     "distance":6
-                  }
-               ]
-            }
-         ]
-      }
-   ]
+          ]
+        }
+      ]
+    }
+  ]
 }
 </textarea>
-            </p>
+            </div>
         </form>
 
         <script src="app.js"></script>
@@ -68,11 +66,15 @@
             app.init({canvas: canvas});
 
             function updateAndRedraw() {
+                canvas.width = settings.width.value;
+                canvas.height = settings.height.value;
                 app.setTreeJSON(settings.treeJSON.value);
                 app.draw();
             }
 
             settings.treeJSON.addEventListener('input', updateAndRedraw);
+            settings.width.addEventListener('input', updateAndRedraw);
+            settings.height.addEventListener('input', updateAndRedraw);
 
             //settings.treeJSON.value = '{"distance": 10, "children": [{"distance": 1, "children": [{"distance": 3}, {"distance": 1.5}]}, {"distance": 5, "children": [{"distance": 2, "children": [{"distance": 3}, {"distance": 4}]}, {"distance": 2, "children": [{"distance": 1}, {"distance": 6}]}]}]}';
 

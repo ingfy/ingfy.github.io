@@ -111,6 +111,12 @@
         return node;
     };
 
+    Node.prototype.countBranches = function countBranches() {
+        if (this.isLeafNode()) return 1;
+
+        return this.children[0].countBranches() + this.children[1].countBranches();
+    };
+
     Node.prototype.toJSON = function toJSON() {
         return JSON.stringify(toPlainObject(this), null, 2);
     };
@@ -159,10 +165,8 @@
         drawLine(x, y, nextX, y);
 
         if (node.children && node.children.length === 2) {
-            var nextYOffset = height / (Math.pow(2, node.getLevelDeepestLeaf().depth) / 2);
-            var nextHeight = nextYOffset - 10;
-
-            console.log('drawing children at (', nextX, ',', y - nextYOffset, ') and (', nextX, ',', y + nextYOffset, ') with nextHeight', nextHeight);
+            var nextYOffset = height / 4;
+            var nextHeight = height / 2;
 
             drawLine(nextX, y, nextX, y - nextYOffset);
             drawTree(nextX, y - nextYOffset, width, nextHeight, distanceWidth, node.children[0]);
@@ -173,10 +177,9 @@
     }
 
     app.draw = function draw() {
-        size = {
-            width: canvas.width,
-            height: canvas.height
-        };
+        size.width = canvas.width;
+        size.height = canvas.height;
+
         context.clearRect(0, 0, size.width, size.height);
 
         if (!tree) {

@@ -173,6 +173,10 @@
     }
 
     app.draw = function draw() {
+        size = {
+            width: canvas.width,
+            height: canvas.height
+        };
         context.clearRect(0, 0, size.width, size.height);
 
         if (!tree) {

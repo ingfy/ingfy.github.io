@@ -13,8 +13,54 @@
         <canvas id="canvas" height="500px"></canvas>
 
         <form id="settings">
-            <label for="treeJSON">Tree as JSON</label>
-            <input name="treeJSON" />
+            <p><label for="treeJSON">Tree as JSON</label></p>
+            <p>
+<textarea name="treeJSON" cols="40" rows="20">
+{
+   "distance": 10,
+   "children": [
+      {
+         "distance": 1,
+         "children": [
+            {
+               "distance":3
+            },
+            {
+               "distance":1.5
+            }
+         ]
+      },
+      {
+         "distance": 5,
+         "children": [
+            {
+               "distance": 2,
+               "children": [
+                  {
+                     "distance":3
+                  },
+                  {
+                     "distance":4
+                  }
+               ]
+            },
+            {
+               "distance": 2,
+               "children": [
+                  {
+                     "distance":1
+                  },
+                  {
+                     "distance":6
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}
+</textarea>
+            </p>
         </form>
 
         <script src="app.js"></script>
@@ -28,7 +74,7 @@
 
             settings.treeJSON.addEventListener('input', updateAndRedraw);
 
-            settings.treeJSON.value = '{"distance": 10, "children": [{"distance": 1, "children": [{"distance": 3}, {"distance": 1.5}]}, {"distance": 5, "children": [{"distance": 2, "children": [{"distance": 3}, {"distance": 4}]}, {"distance": 2, "children": [{"distance": 1}, {"distance": 6}]}]}]}';
+            //settings.treeJSON.value = '{"distance": 10, "children": [{"distance": 1, "children": [{"distance": 3}, {"distance": 1.5}]}, {"distance": 5, "children": [{"distance": 2, "children": [{"distance": 3}, {"distance": 4}]}, {"distance": 2, "children": [{"distance": 1}, {"distance": 6}]}]}]}';
 
             updateAndRedraw();
         </script>

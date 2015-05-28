@@ -155,7 +155,14 @@
         context.stroke();
     }
 
+    function branchTo(x1, y1, x2, y2, width, height, distanceWidth, node) {
+        drawLine(x1, y1, x2, y2);
+        drawTree(x2, y2, width, height, distanceWidth, node);
+    }
+
     function drawTree(x, y, width, height, distanceWidth, node) {
+        console.log('drawing tree with dist', node.distance, 'branches', node.countBranches(), 'height', height);
+
         context.beginPath();
         context.arc(x, y, 5, 0, 2 * Math.PI);
         context.fill();
@@ -165,14 +172,15 @@
         drawLine(x, y, nextX, y);
 
         if (node.children && node.children.length === 2) {
-            var nextYOffset = height / 4;
-            var nextHeight = height / 2;
+            var branchHeight = height / node.countBranches();
 
-            drawLine(nextX, y, nextX, y - nextYOffset);
-            drawTree(nextX, y - nextYOffset, width, nextHeight, distanceWidth, node.children[0]);
+            var leftHeight = node.children[0].countBranches() * branchHeight,
+                rightHeight = node.children[1].countBranches() * branchHeight;
 
-            drawLine(nextX, y, nextX, y + nextYOffset);
-            drawTree(nextX, y + nextYOffset, width, nextHeight, distanceWidth, node.children[1]);
+            console.log('height', height, 'leftHeight', leftHeight, 'rightHeight', rightHeight);
+
+            branchTo(nextX, y, nextX, y - (height - leftHeight) / 2, width, leftHeight, distanceWidth, node.children[0]);
+            branchTo(nextX, y, nextX, y + (height - rightHeight) / 2, width, rightHeight, distanceWidth, node.children[1]);
         }
     }
 

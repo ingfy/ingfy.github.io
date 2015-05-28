@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grafz</title>
+
+        <style media="screen">
+            #canvas {
+
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" height="500px"></canvas>
+
+        <form id="settings">
+            <label for="treeJSON">Tree as JSON</label>
+            <input name="treeJSON" />
+        </form>
+
+        <script src="app.js"></script>
+        <script>
+            app.init({canvas: canvas});
+
+            function updateAndRedraw() {
+                app.setTreeJSON(settings.treeJSON.value);
+                app.draw();
+            }
+
+            settings.treeJSON.addEventListener('input', updateAndRedraw);
+
+            settings.treeJSON.value = '{"distance": 10, "children": [{"distance": 1, "children": [{"distance": 3}, {"distance": 1.5}]}, {"distance": 5, "children": [{"distance": 2, "children": [{"distance": 3}, {"distance": 4}]}, {"distance": 2, "children": [{"distance": 1}, {"distance": 6}]}]}]}';
+
+            updateAndRedraw();
+        </script>
+    </body>
+</html>

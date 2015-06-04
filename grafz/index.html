@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Grafz</title>
-
-        <style media="screen">
-            #canvas {
-
-            }
-        </style>
+        <title>BinGrafz</title>
     </head>
     <body>
         <canvas id="canvas"></canvas>
@@ -61,22 +55,20 @@
             </div>
         </form>
 
-        <script src="app.js"></script>
+        <script src="dist/app.js"></script>
         <script>
-            app.init({canvas: canvas});
+            App.init({canvas: canvas});
 
             function updateAndRedraw() {
                 canvas.width = settings.width.value;
                 canvas.height = settings.height.value;
-                app.setTreeJSON(settings.treeJSON.value);
-                app.draw();
+                App.setTreeJSON(settings.treeJSON.value);
+                App.draw();
             }
 
             settings.treeJSON.addEventListener('input', updateAndRedraw);
             settings.width.addEventListener('input', updateAndRedraw);
             settings.height.addEventListener('input', updateAndRedraw);
-
-            //settings.treeJSON.value = '{"distance": 10, "children": [{"distance": 1, "children": [{"distance": 3}, {"distance": 1.5}]}, {"distance": 5, "children": [{"distance": 2, "children": [{"distance": 3}, {"distance": 4}]}, {"distance": 2, "children": [{"distance": 1}, {"distance": 6}]}]}]}';
 
             updateAndRedraw();
         </script>

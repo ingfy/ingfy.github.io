@@ -1,0 +1,165 @@
+html, body {
+  padding: 0;
+  margin: 0; }
+
+a {
+  text-decoration: none; }
+
+body {
+  font-family: Cardo, Lato, Allerta, Geneva, Arial;
+  height: 100%;
+  display: block;
+  text-align: center;
+  overflow-x: hidden; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro", Lato, "Open Sans", Roboto, Cardo;
+  font-weight: normal; }
+
+.avatar {
+  border-radius: 50%;
+  display: block;
+  width: 125px;
+  margin: 1em auto; }
+
+article p img {
+  display: block;
+  margin: 1em auto; }
+  article p img.lineimage {
+    display: inline-block; }
+
+header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: left;
+  background-color: transparent;
+  transition: background .25s ease; }
+  header.filled {
+    background-color: #49ca82; }
+    nav ul.menu li header.filled > a:hover {
+      background-color: #70d69d; }
+  header h1, header nav {
+    display: inline-block; }
+  header h1 {
+    font-size: 20px; }
+  header nav {
+    display: none;
+    float: right;
+    height: 50px; }
+    @media screen and (min-width: 600px) {
+      header nav {
+        display: block; } }
+    header nav ul.menu {
+      list-style-type: none;
+      margin: 0;
+      display: block;
+      height: 100%; }
+      header nav ul.menu li {
+        display: inline-block;
+        margin: 0;
+        height: 50px; }
+        header nav ul.menu li > a {
+          color: white;
+          display: block;
+          height: 100%;
+          padding: 0 10px;
+          line-height: 50px; }
+
+.masthead {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("splash.jpg");
+  background-size: cover; }
+  .masthead .splash {
+    width: 100%;
+    display: block;
+    margin: auto;
+    color: white;
+    background: none;
+    font-family: Roboto;
+    padding: 0 1em; }
+    .masthead .splash h1 {
+      font-size: 60px;
+      margin: 0;
+      font-weight: bolder; }
+    .masthead .splash p {
+      font-size: 30px; }
+    .masthead .splash button {
+      background-color: #49ca82;
+      padding: 0.5em 1em;
+      font-size: 20px;
+      border: 0px;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      font-family: "Source Sans Pro", Lato, "Open Sans", Roboto, Cardo; }
+      .masthead .splash button:hover {
+        background-color: #38c175;
+        cursor: pointer; }
+
+main.content {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  height: 100%; }
+
+article .contents {
+  margin: 0 auto;
+  font-size: 20px; }
+  @media screen and (min-width: 800px) {
+    article .contents {
+      max-width: 600px; } }
+  @media screen and (min-width: 1000px) {
+    article .contents {
+      max-width: 800px; } }
+  article .contents h1 {
+    font-size: 40px;
+    margin: .5em 0; }
+
+article:not(.quote) {
+  background-color: white; }
+
+article.quote {
+  text-align: left;
+  background-color: #33ad69;
+  color: white;
+  padding-top: 2em;
+  padding-bottom: 1em; }
+  article.quote blockquote {
+    font-size: 36px;
+    position: relative;
+    padding: 0em 3em;
+    box-sizing: border-box; }
+    article.quote blockquote:before, article.quote blockquote:after {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      font-size: 200px;
+      line-height: 1; }
+    article.quote blockquote:before {
+      top: -20px;
+      left: 0px;
+      content: "\201C"; }
+    article.quote blockquote:after {
+      top: -20px;
+      right: 0px;
+      content: "\201D"; }
+    article.quote blockquote p {
+      margin-bottom: 0;
+      margin-top: 0; }
+    article.quote blockquote h2 {
+      text-align: right;
+      font-size: 24px;
+      padding-right: 1em;
+      font-family: Cardo, Lato, Allerta, Geneva, Arial;
+      font-style: italic; }

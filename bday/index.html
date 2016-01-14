@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>A birthday like none other</title>
+
+        <link href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,100italic,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header id="header">
+            <h1 class="brand">Laura's 25th</h1>
+            <nav>
+                <ul class="menu">
+                    <li><a href="#congratulations">Congratulations</a></li>
+                    <li><a href="#celebrations">Celebrations</a></li>
+                    <li><a href="#gifts">Gifts</a></li>
+                    <li><a href="#whatsnext">What's Next?</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="masthead">
+            <article class="splash">
+                <h1>A very special number.</h1>
+                <p>Laura's 25th. A day for smiles. Today is all about Laura. Start exploring your day now.</p>
+                <button type="button" name="button">
+                    Get Started
+                </button>
+            </article>
+        </div>
+        <main class="content">
+            <article class="quote">
+                <blockquote class="contents">
+                    <p>Laura is the shining light of my life</p>
+                    <h2>Yngve Svalestuen<br>Husband</h2>
+                </blockquote>
+            </article>
+            <article class="congratulations" id="congratulations">
+                <section class="contents">
+                    <h1>Congratulating Laura</h1>
+                    <p>
+                        Happy birthday, Laura my dear. Congratulations on reaching
+                        the beautiful age of 25 years old! It's a nice age. Trust me,
+                        I've been here for a while. But today is about you. I want
+                        you to enjoy, relax, feel special and have fun.
+                    </p>
+                    <p>
+                        This is my happy birthday card to you. I hope you like it. =)
+                    </p>
+                    <p>
+                        <img class="avatar" src="yngve.jpg" />
+                        <em>My sincerest wishes of a happy day go out to you.</em>
+                    </p>
+                </section>
+            </article>
+            <article class="quote">
+                <blockquote class="contents">
+                    <p>Celebrating Laura... That's what I do every day of my life</p>
+                    <h2>Yngve Svalestuen<br>Husband</h2>
+                </blockquote>
+            </article>
+            <article class="celebrations" id="celebrations">
+                <section class="contents">
+                    <h1>The celebrations</h1>
+                    <p>
+                        <img src="work.png" />
+                        First, one must work.
+                    </p>
+                    <p>
+                        Then there is a trip.
+                        <img src="drive.png" />
+                    </p>
+                    <p>
+                        <img src="party.png" />
+                        <img src="cabin.png" />
+                    </p>
+                    <p>Party in the cabin.</p>
+                </section>
+            </article>
+            <article class="quote">
+                <blockquote class="contents">
+                    <p>The Laura is a mysterious beast. But upon further study, you quickly see the wonder inside.</p>
+                    <h2>Yngve Svalestuen<br>Husband</h2>
+                </blockquote>
+            </article>
+            <article class="celebrations" id="gifts">
+                <section class="contents">
+                    <h1>Gift stop</h1>
+                    <p><em>You know what, Lau'? You can have anythin' you want. But I'll buy you a phone as well.</em></p>
+                    <p>
+                        <img src="phone.png" style="width:300px;"/>
+                        Maybe this is your new phone? A phone owner should be
+                        excited about their phone. So it's okay to take your
+                        time to decide. There's no rush.
+                    </p>
+                </section>
+            </article>
+            <article class="quote">
+                <blockquote class="contents">
+                    <p>Wanna blerch?</p>
+                    <h2>Yngve Svalestuen<br>Husband</h2>
+                </blockquote>
+            </article>
+            <article class="celebrations" id="whatsnext">
+                <section class="contents">
+                    <h1>What's next?</h1>
+                    <p>
+                        This day is <strong>yours</strong>. Every day is.
+                        Seize them. Go do what <em>you</em> want to do.
+                    </p>
+                    <p>
+                        <img class="lineimage" src="chemistry.png" />
+                        <img class="lineimage" src="maths.png" />
+                        <img class="lineimage" src="networks.png" />
+                    </p>
+                    <p>
+                        <em>On this special day I want to say how impressed
+                            I am with you, Lau. You always do so many things,
+                            explore all the science, learn everything you can,
+                            and somehow always find friends everywhere. You are
+                            really amazing.</em>
+                    </p>
+                </section>
+            </article>
+            <article class="quote">
+                <blockquote class="contents">
+                    <p>I'll be right here next to you, supporting what you want to do.</p>
+                    <h2>Yngve Svalestuen<br>Husband</h2>
+                </blockquote>
+            </article>
+        </main>
+        <script>
+            ;(function() {
+                var throttle = function(type, name, obj) {
+                    obj = obj || window;
+                    var running = false;
+                    var func = function() {
+                        if (running) { return; }
+                        running = true;
+                        requestAnimationFrame(function() {
+                            obj.dispatchEvent(new CustomEvent(name));
+                            running = false;
+                        });
+                    };
+                    obj.addEventListener(type, func);
+                };
+
+                /* init - you can init any event */
+                throttle ("scroll", "optimizedScroll");
+            })();
+
+            var header = document.getElementById('header');
+
+            // handle event
+            window.addEventListener("optimizedScroll", function() {
+                if (window.scrollY > 0) {
+                    header.classList.add('filled');
+                } else {
+                    header.classList.remove('filled');
+                }
+            });
+        </script>
+    </body>
+</html>
